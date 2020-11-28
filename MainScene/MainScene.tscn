@@ -13,9 +13,10 @@ script = ExtResource( 2 )
 [node name="Room" parent="." instance=ExtResource( 3 )]
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 10, -10 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23.6232, -10 )
 shadow_enabled = true
-spot_range = 21.5811
+spot_range = 70.1118
+spot_angle = 70.4456
 
 [node name="Block" type="Spatial" parent="."]
 

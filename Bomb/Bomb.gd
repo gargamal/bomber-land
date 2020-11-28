@@ -3,7 +3,7 @@ extends KinematicBody
 onready var _fragment = preload("res://Bomb/Fragment.tscn") 
 
 var velocity := Vector3.ZERO
-export (float) var lapstime = 1.0
+export (float) var lapstime = 1.5
 
 const GRAVITY := -9.8 * 5
 
@@ -16,7 +16,8 @@ var speed_vertical = 0.0
 var speed_horizontal = 0.0
 
 
-var touch = false
+var touchBomb = false
+var firing = false
 
 func _ready():
 	add_to_group("bomb")
@@ -24,12 +25,12 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if is_on_floor() and not touch:
+	if is_on_floor() and not touchBomb:
 		velocity = Vector3.ZERO
 	else :
 		velocity.y += GRAVITY * delta
 		velocity = move_and_slide(velocity, Vector3.UP)
-		touch = false
+		touchBomb = false
 
 
 func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float):
@@ -45,7 +46,7 @@ func start(position : Transform, direction : Transform, pSpeed_vertical : float,
 
 
 func createAllInstanceFragement():
-	var multiplier = 10.0
+	var multiplier = 5.0
 	for i in range(-multiplier, multiplier, 1):
 		var angle1 = PI * i / multiplier
 		for j in range(-multiplier, multiplier, 1):
@@ -62,13 +63,16 @@ func _on_Timer_timeout():
 
 
 func fire():
-	for i in range(0, fragments.size()):
-		fragments[i].fire()
-	$Particles.emitting = true
-	$MeshInstance.visible = false
-	$AnimationPlayer.play("light")
-	yield($AnimationPlayer, "animation_finished")
-	queue_free()
+	if not firing:
+		firing = true
+		for i in range(0, fragments.size()):
+			if fragments[i] != null:
+				fragments[i].fire()
+		$Particles.emitting = true
+		$MeshInstance.visible = false
+		$AnimationPlayer.play("light")
+		yield($AnimationPlayer, "animation_finished")
+		queue_free()
 
 
 func createInstanceFragement(coord: Vector3):
@@ -80,8 +84,7 @@ func createInstanceFragement(coord: Vector3):
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
-		touch = true
+		touchBomb = true
 		velocity = speed_vertical * 4.0 * -transform.basis.z
 		velocity.y = speed_horizontal
 		
-	

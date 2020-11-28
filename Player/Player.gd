@@ -17,7 +17,7 @@ export(float) var walkDeacceleration := 6.0
 export(float) var speed_lauch := 5.0
 export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
-export(float) var lapstime := 1.0
+export(float) var lapstime := 0.5
 
 var launch_bomb = true
 

@@ -33,3 +33,6 @@ func _on_Area_body_entered(body):
 		queue_free()
 	elif body.is_in_group("block"):
 		queue_free()
+	elif body.is_in_group("bomb"):
+		body.fire()
+		queue_free()
