@@ -47,6 +47,19 @@ launch_bomb={
  ]
 }
 
+[layer_names]
+
+3d_render/layer_1="Room_rend"
+3d_physics/layer_1="Room_phys"
+3d_render/layer_2="box_rend"
+3d_physics/layer_2="box_phys"
+3d_render/layer_3="Bomb_rend"
+3d_physics/layer_3="Bomb_phys"
+3d_render/layer_4="Fragment_rend"
+3d_physics/layer_4="Fragment_phys"
+3d_render/layer_5="Player_rend"
+3d_physics/layer_5="Player_phys"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

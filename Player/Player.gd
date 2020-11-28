@@ -17,14 +17,17 @@ export(float) var walkDeacceleration := 6.0
 export(float) var speed_lauch := 5.0
 export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
-export(float) var intervalle := 1.0
+export(float) var lapstime := 1.0
 
 var launch_bomb = true
+
+var isDead = false
 
 onready var _bomb = preload("res://Bomb/Bomb.tscn") 
 var bomb = null
 
 func _ready():
+	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -42,10 +45,11 @@ func _input(event):
 func launch():
 	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
 		bomb = _bomb.instance()
-		bomb.start($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform().basis, speed_lauch, speed_fly)
 		get_parent().add_child(bomb)
-		$Timer.start(intervalle)
+		bomb.start($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform(), speed_lauch, speed_fly)
+		$Timer.start(lapstime)
 		launch_bomb = false
+		isDead = false
 
 
 func ifExit():
@@ -101,3 +105,11 @@ func aim():
 
 func _on_Timer_timeout():
 	launch_bomb = true
+	
+	
+func inFireBomb():
+	if not isDead:
+		print("BAMMMM... Dead")
+		isDead = true
+	
+	
