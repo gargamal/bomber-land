@@ -1,5 +1,6 @@
 extends "res://Character/Character.gd"
 
+
 var camera_change := Vector2.ZERO
 
 export(float) var cameraAngle := 0.0
@@ -14,21 +15,16 @@ func _physics_process(delta):
 	ifExit()
 	aim()
 	walkChooseDirection(delta)
-	launch()
+	launchTest()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
 		camera_change = event.relative
 
 
-func launch():
+func launchTest():
 	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
-		bomb = _bomb.instance()
-		get_parent().add_child(bomb)
-		bomb.start($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform(), speed_lauch, speed_fly)
-		$Timer.start(lapstime)
-		launch_bomb = false
-		isDead = false
+		launch($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform())
 
 
 func ifExit():

@@ -9,15 +9,12 @@ const GRAVITY := -9.8 * 5
 
 enum { UNKOWN, LOADING, EXPLODE }
 var state = UNKOWN
-
 var fragments = []
-
 var speed_vertical = 0.0
 var speed_horizontal = 0.0
-
-
 var touchBomb = false
 var firing = false
+var bombOwner
 
 func _ready():
 	add_to_group("bomb")
@@ -33,7 +30,7 @@ func _physics_process(delta):
 		touchBomb = false
 
 
-func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float):
+func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String):
 	createAllInstanceFragement()
 	speed_vertical = pSpeed_vertical
 	speed_horizontal = pSpeed_horizontal
@@ -43,6 +40,7 @@ func start(position : Transform, direction : Transform, pSpeed_vertical : float,
 	state = LOADING
 	$AnimationPlayer.play("color")
 	$Timer.start(lapstime)
+	bombOwner = pBombOwner
 
 
 func createAllInstanceFragement():

@@ -22,9 +22,5 @@ func getNewDirection()-> Vector3:
 	if east != Vector3.ZERO:
 		list.append(east)
 		
-	return randArray(list)
+	return Game.randArray(list)
 
-
-func randArray(list :Array)-> Vector3:
-	randomize()
-	return list[randi() % list.size()]

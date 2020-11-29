@@ -8,11 +8,25 @@
 [node name="MainScene" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6909, 1, 30.7195 )
-
 [node name="Room" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302673, -0.911617, 0.09589 )
 
-[node name="IA" parent="." instance=ExtResource( 4 )]
+[node name="IA_poopman" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107021, 1, -19 )
+playerName = "Poop-Man"
+lapstime = 1.5
+
+[node name="IA_shoopy" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4197, 1, -19 )
+playerName = "Shoopy"
+lapstime = 1.5
+
+[node name="IA_Jose" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107021, 1, 30.0337 )
+playerName = "José"
+lapstime = 1.5
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26663, 0 )
+playerName = "Rogger"
+speed_shoot = 30.0

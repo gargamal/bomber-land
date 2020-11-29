@@ -2,4 +2,4 @@ extends Spatial
 
 
 func _ready():
-	pass # Replace with function body.
+	Game.registration([$Player.playerName, $IA_poopman.playerName, $IA_shoopy.playerName, $IA_Jose.playerName])

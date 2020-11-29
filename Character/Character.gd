@@ -4,10 +4,10 @@ var velocity := Vector3.ZERO
 
 const GRAVITY := -9.8 * 5
 
+export(String) var playerName := ""
 export(float) var walkSpeed := 30.0
 export(float) var walkAcceleration := 2.0
 export(float) var walkDeacceleration := 6.0
-
 export(float) var speed_lauch := 5.0
 export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
@@ -21,14 +21,13 @@ onready var _bomb = preload("res://Bomb/Bomb.tscn")
 var bomb = null
 
 
-func launch():
-	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
-		bomb = _bomb.instance()
-		get_parent().add_child(bomb)
-		bomb.start($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform(), speed_lauch, speed_fly)
-		$Timer.start(lapstime)
-		launch_bomb = false
-		isDead = false
+func launch(position : Transform, direction : Transform):
+	bomb = _bomb.instance()
+	get_parent().add_child(bomb)
+	bomb.start(position, direction, speed_lauch, speed_fly, playerName)
+	$Timer.start(lapstime)
+	launch_bomb = false
+	isDead = false
 
 
 func walk(direction :Vector3, delta :float):
@@ -55,12 +54,9 @@ func _on_Timer_timeout():
 	launch_bomb = true
 	
 	
-func inFireBomb():
+func inFireBomb(whoseIsBomb :String):
 	if not isDead:
-		print("BAMMMM... Dead")
+		Game.addKill(playerName, whoseIsBomb)
+		Game.drawScore()
 		isDead = true
-		
 
-func randArray(list :Array)-> Vector3:
-	randomize()
-	return list[randi() % list.size()]
