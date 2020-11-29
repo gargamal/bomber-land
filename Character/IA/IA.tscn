@@ -44,6 +44,9 @@ wait_time = 0.2
 one_shot = true
 
 [node name="LaunchCadency" type="Timer" parent="."]
+
+[node name="TimeRespawn" type="Timer" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="TestWall" to="." method="_on_TestWall_timeout"]
 [connection signal="timeout" from="LaunchCadency" to="." method="_on_LaunchCadency_timeout"]
+[connection signal="timeout" from="TimeRespawn" to="." method="_on_TimeRespawn_timeout"]

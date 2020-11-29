@@ -27,7 +27,6 @@ func launch(position : Transform, direction : Transform):
 	bomb.start(position, direction, speed_lauch, speed_fly, playerName)
 	$Timer.start(lapstime)
 	launch_bomb = false
-	isDead = false
 
 
 func walk(direction :Vector3, delta :float):
@@ -57,6 +56,18 @@ func _on_Timer_timeout():
 func inFireBomb(whoseIsBomb :String):
 	if not isDead:
 		Game.addKill(playerName, whoseIsBomb)
-		Game.drawScore()
 		isDead = true
+		visible = false
+		translate(Vector3(0, 15.0, 0))
+		rotate(Vector3(1, 0, 0), -PI / 2.0)
+		set_physics_process(false)
+		$TimeRespawn.start(2.0)
 
+
+func _on_TimeRespawn_timeout():
+	var room = get_parent().get_node("Room")
+	global_transform = room.getRespawn()
+	isDead = false
+	visible = true
+	$TimeRespawn.stop()
+	set_physics_process(true)
