@@ -9,13 +9,14 @@
 [node name="block" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 2
-collision_mask = 31
+collision_mask = 63
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+layers = 2
 mesh = SubResource( 1 )
 material/0 = null
 

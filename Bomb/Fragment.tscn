@@ -20,7 +20,7 @@ emission_on_uv2 = false
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 visible = false
 collision_layer = 2147483656
-collision_mask = 22
+collision_mask = 54
 script = ExtResource( 1 )
 
 [node name="ColFrag" type="CollisionShape" parent="."]
@@ -28,6 +28,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+layers = 0
 material_override = SubResource( 2 )
 mesh = SubResource( 3 )
 material/0 = null

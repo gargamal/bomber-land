@@ -1,27 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Character/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=2]
 [ext_resource path="res://room/Room.tscn" type="PackedScene" id=3]
-[ext_resource path="res://block/block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Character/IA/IA.tscn" type="PackedScene" id=4]
 
 [node name="MainScene" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6909, 1, 30.7195 )
 
 [node name="Room" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302673, -0.911617, 0.09589 )
 
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23.6232, -10 )
-shadow_enabled = true
-spot_range = 70.1118
-spot_angle = 70.4456
-
-[node name="Block" type="Spatial" parent="."]
-
-[node name="block" parent="Block" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 12, -20, 1, 0 )
-
-[node name="block2" parent="Block" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 22, 15, 1, -4 )
+[node name="IA" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107021, 1, -19 )

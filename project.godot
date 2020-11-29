@@ -59,6 +59,8 @@ launch_bomb={
 3d_physics/layer_4="Fragment_phys"
 3d_render/layer_5="Player_rend"
 3d_physics/layer_5="Player_phys"
+3d_physics/layer_6="IA_phys"
+3d_physics/layer_7="CtrlPoint_phys"
 
 [rendering]
 

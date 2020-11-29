@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://room/Room.gd" type="Script" id=1]
+[ext_resource path="res://block/block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ControlPoint/ControlPoint.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.764706, 0.509804, 0.509804, 1 )
@@ -24,7 +26,10 @@ __meta__ = {
 
 [node name="Floor" type="StaticBody" parent="."]
 transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
-collision_mask = 0
+collision_mask = 63
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 material_override = SubResource( 1 )
@@ -36,7 +41,11 @@ shape = SubResource( 3 )
 
 [node name="ceiling" type="StaticBody" parent="."]
 transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 32, 0 )
+visible = false
 collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="ceiling"]
 material_override = SubResource( 1 )
@@ -48,7 +57,10 @@ shape = SubResource( 3 )
 
 [node name="wall1" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 15, 0, 0, 0, 40, -45, 16.1727, 0 )
-collision_mask = 2147483656
+collision_mask = 2147483710
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="wall1"]
 mesh = SubResource( 4 )
@@ -59,7 +71,10 @@ shape = SubResource( 5 )
 
 [node name="wall2" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 15, 0, 0, 0, 40, 45, 16, 0 )
-collision_mask = 8
+collision_mask = 2147483710
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="wall2"]
 mesh = SubResource( 4 )
@@ -70,7 +85,10 @@ shape = SubResource( 5 )
 
 [node name="wall3" type="StaticBody" parent="."]
 transform = Transform( -1.62921e-07, 0, 50, 0, 15, 0, -1, 0, -8.14603e-06, 0, 16, -41 )
-collision_mask = 8
+collision_mask = 2147483710
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="wall3"]
 mesh = SubResource( 4 )
@@ -81,7 +99,10 @@ shape = SubResource( 5 )
 
 [node name="wall4" type="StaticBody" parent="."]
 transform = Transform( -1.62921e-07, 0, 50, 0, 15, 0, -1, 0, -8.14603e-06, 0, 16, 41 )
-collision_mask = 8
+collision_mask = 2147483710
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MeshInstance" type="MeshInstance" parent="wall4"]
 mesh = SubResource( 4 )
@@ -89,3 +110,109 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="wall4"]
 shape = SubResource( 5 )
+
+[node name="Ligths" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="Ligths"]
+layers = 31
+light_color = Color( 1, 0.745098, 0.45098, 1 )
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 35.0
+
+[node name="SpotLight2" type="SpotLight" parent="Ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -25, 0 )
+light_color = Color( 1, 0.745098, 0.45098, 1 )
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 35.0
+
+[node name="SpotLight3" type="SpotLight" parent="Ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 25, 0 )
+light_color = Color( 1, 0.745098, 0.45098, 1 )
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 35.0
+
+[node name="SpotLight4" type="SpotLight" parent="Ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 25, 0 )
+light_color = Color( 1, 0.745098, 0.45098, 1 )
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 35.0
+
+[node name="SpotLight5" type="SpotLight" parent="Ligths"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -25, 0 )
+light_color = Color( 1, 0.745098, 0.45098, 1 )
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 35.0
+
+[node name="Blocks" type="Spatial" parent="."]
+
+[node name="block" parent="Blocks" instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -27, 6, 0 )
+
+[node name="block2" parent="Blocks" instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 22.4866, 6, 0 )
+
+[node name="block3" parent="Blocks" instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 22.4866, 6, 9.98343 )
+
+[node name="ControlPoint" type="Spatial" parent="."]
+
+[node name="ControlPoint" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, -37 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( 0, 0, 1 )
+west = Vector3( 1, 0, 1 )
+east = Vector3( -1, 0, 1 )
+
+[node name="ControlPoint3" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 3, -37 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( 0, 0, 0 )
+west = Vector3( 0, 0, 0 )
+east = Vector3( -1, 0, 1 )
+
+[node name="ControlPoint5" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 3, 38 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( 0, 0, -1 )
+west = Vector3( -1, 0, -1 )
+east = Vector3( -1, 0, 0 )
+
+[node name="ControlPoint4" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, -37 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( 0, 0, 0 )
+west = Vector3( 0, 0, 1 )
+east = Vector3( 1, 0, 1 )
+
+[node name="ControlPoint6" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, 38 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( 0, 0, -1 )
+west = Vector3( 1, 0, 0 )
+east = Vector3( 1, 0, -1 )
+
+[node name="ControlPoint7" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, 11 )
+north = Vector3( 0, 0, 1 )
+south = Vector3( 0, 0, -1 )
+west = Vector3( 1, 0, 1 )
+
+[node name="ControlPoint8" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 41, 3, 20 )
+north = Vector3( 0, 0, 1 )
+south = Vector3( 0, 0, -1 )
+west = Vector3( -1, 0, 1 )
+east = Vector3( -1, 0, 0 )
+
+[node name="ControlPoint2" parent="ControlPoint" instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, 38 )
+north = Vector3( 0, 0, 0 )
+south = Vector3( -1, 0, -1 )
+west = Vector3( 1, 0, -1 )
+east = Vector3( 0, 0, -1 )
