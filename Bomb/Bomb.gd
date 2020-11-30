@@ -14,39 +14,27 @@ var state = UNKOWN
 var fragments = []
 var speed_vertical = 0.0
 var speed_horizontal = 0.0
-var touchBomb = false
 var firing = false
 var bombOwner
+
 
 func _ready():
 	add_to_group("bomb")
 
 
 func _physics_process(delta):
+	velocity.y += GRAVITY * delta
 	
-	if is_on_floor() and not touchBomb:
-		velocity = Vector3.ZERO
-	else :
-		velocity.y += GRAVITY * delta
-		velocity = move_and_slide(velocity, Vector3.UP)
-		touchBomb = false
-		
-#	velocity.y += GRAVITY * delta
-	
-#	var temp_velocity = velocity
-#	temp_velocity.y = 0.0
-#	temp_velocity *= friction
-#	velocity.x = temp_velocity.x
-#	velocity.z = temp_velocity.z
-#	velocity = move_and_slide(velocity, Vector3.UP)
-#	touchBomb = false
+	var temp_velocity = velocity
+	temp_velocity.y = 0.0
+	temp_velocity *= friction
+	velocity.x = temp_velocity.x
+	velocity.z = temp_velocity.z
+	velocity = move_and_slide(velocity, Vector3.UP)
 
 
 func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String, color: Color):
-	var material = $Mesh.material_override.duplicate()
-	material.albedo_color = color
-	$Mesh.material_override = material
-	
+	createMaterial(color)
 	createAllInstanceFragement()
 	
 	speed_vertical = pSpeed_vertical
@@ -55,12 +43,17 @@ func start(position : Transform, direction : Transform, pSpeed_vertical : float,
 	velocity = speed_vertical * -direction.basis.z
 	velocity.y = speed_horizontal
 	state = LOADING
-	$Timer.start(lapstime)
 	bombOwner = pBombOwner
 	
+	$Timer.start(lapstime)
 	$Anim.play("color_anim")
-	#$Mesh.material_override.albedo_color = color
 	
+
+func createMaterial(color: Color):
+	var material = $Mesh.material_override.duplicate()
+	material.albedo_color = color
+	$Mesh.material_override = material
+
 
 func createAllInstanceFragement():
 	var multiplier = 5.0
@@ -101,8 +94,7 @@ func createInstanceFragement(coord: Vector3):
 
 
 func _on_Area_body_entered(body):
-	if body.is_in_group("player"):
-		touchBomb = true
+	if body.is_in_group("player") or body.is_in_group("IA"):
 		velocity = speed_vertical * 4.0 * -transform.basis.z
 		velocity.y = speed_horizontal
 		
