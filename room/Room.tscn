@@ -163,55 +163,55 @@ transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 22.4866, 6, 9.98343 )
 [node name="ControlPoint" type="Spatial" parent="."]
 
 [node name="P1" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, -37 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -38 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( 0, 0, 1 )
 west = Vector3( 1, 0, 1 )
 east = Vector3( -1, 0, 1 )
 
 [node name="P2" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 3, -37 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 3, -38 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( 0, 0, 0 )
 west = Vector3( 0, 0, 0 )
 east = Vector3( -1, 0, 1 )
 
 [node name="P3" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 3, 38 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 3, 38 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( 0, 0, -1 )
 west = Vector3( -1, 0, -1 )
 east = Vector3( -1, 0, 0 )
 
 [node name="P4" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, -37 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 3, -37 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( 0, 0, 0 )
 west = Vector3( 0, 0, 1 )
 east = Vector3( 1, 0, 1 )
 
 [node name="P5" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, 38 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 3, 38 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( 0, 0, -1 )
 west = Vector3( 1, 0, 0 )
 east = Vector3( 1, 0, -1 )
 
 [node name="P6" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -41, 3, 11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 3, 11 )
 north = Vector3( 0, 0, 1 )
 south = Vector3( 0, 0, -1 )
 west = Vector3( 1, 0, 1 )
 
 [node name="P7" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 41, 3, -12 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 3, -12 )
 north = Vector3( 0, 0, 1 )
 south = Vector3( 0, 0, -1 )
 west = Vector3( -1, 0, 1 )
 east = Vector3( -1, 0, 0 )
 
 [node name="P8" parent="ControlPoint" instance=ExtResource( 3 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, 38 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 38 )
 north = Vector3( 0, 0, 0 )
 south = Vector3( -1, 0, -1 )
 west = Vector3( 1, 0, -1 )

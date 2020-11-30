@@ -12,6 +12,7 @@ export(float) var speed_lauch := 5.0
 export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
 export(float) var lapstime := 0.5
+export(Color) var color := Color(0.1, 0.1, 0.1, 1.0)
 
 var launch_bomb = true
 
@@ -24,7 +25,7 @@ var bomb = null
 func launch(position : Transform, direction : Transform):
 	bomb = _bomb.instance()
 	get_parent().add_child(bomb)
-	bomb.start(position, direction, speed_lauch, speed_fly, playerName)
+	bomb.start(position, direction, speed_lauch, speed_fly, playerName, color)
 	$Timer.start(lapstime)
 	launch_bomb = false
 
@@ -58,9 +59,8 @@ func inFireBomb(whoseIsBomb :String):
 		Game.addKill(playerName, whoseIsBomb)
 		isDead = true
 		visible = false
-		translate(Vector3(0, 15.0, 0))
+		translate(Vector3(0, 20.0, 0))
 		rotate(Vector3(1, 0, 0), -PI / 2.0)
-		set_physics_process(false)
 		$TimeRespawn.start(2.0)
 
 
@@ -70,4 +70,4 @@ func _on_TimeRespawn_timeout():
 	isDead = false
 	visible = true
 	$TimeRespawn.stop()
-	set_physics_process(true)
+

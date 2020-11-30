@@ -12,21 +12,33 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302673, -0.911617, 0.09589 )
 
 [node name="IA_poopman" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107021, 1, -19 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20 )
 playerName = "Poop-Man"
+walkSpeed = 25.0
 lapstime = 1.5
+color = Color( 0.313726, 0.211765, 0.211765, 1 )
 
 [node name="IA_shoopy" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4197, 1, -19 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2, -19 )
 playerName = "Shoopy"
 lapstime = 1.5
+color = Color( 0.784314, 0.14902, 0.776471, 1 )
 
 [node name="IA_Jose" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107021, 1, 30.0337 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 30 )
 playerName = "José"
+walkSpeed = 20.0
 lapstime = 1.5
+color = Color( 0.113725, 0.952941, 0.384314, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26663, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 playerName = "Rogger"
 speed_shoot = 30.0
+color = Color( 0.164706, 0.0588235, 0.913725, 1 )
+
+[node name="EndGame" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="EndGame" to="." method="_on_EndGame_timeout"]

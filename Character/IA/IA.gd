@@ -13,10 +13,11 @@ func _ready():
 
 
 func _physics_process(delta):
-	walk(direction, delta)
+	if not isDead:
+		walk(direction, delta)
 	
-	if not changingOnRun and is_on_wall():
-		changeDirectionAfterWallContact()
+		if not changingOnRun and is_on_wall():
+			changeDirectionAfterWallContact()
 
 
 func changeDirectionAfterWallContact():
@@ -37,5 +38,6 @@ func _on_TestWall_timeout():
 
 
 func _on_LaunchCadency_timeout():
-	launch(global_transform, global_transform)
+	if not isDead:
+		launch(global_transform, global_transform)
 

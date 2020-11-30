@@ -2,10 +2,12 @@ extends KinematicBody
 
 onready var _fragment = preload("res://Bomb/Fragment.tscn") 
 
-var velocity := Vector3.ZERO
+var velocity = Vector3.ZERO
+
 export (float) var lapstime = 1.5
 
 const GRAVITY := -9.8 * 5
+const friction = 0.99
 
 enum { UNKOWN, LOADING, EXPLODE }
 var state = UNKOWN
@@ -28,20 +30,37 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta
 		velocity = move_and_slide(velocity, Vector3.UP)
 		touchBomb = false
+		
+#	velocity.y += GRAVITY * delta
+	
+#	var temp_velocity = velocity
+#	temp_velocity.y = 0.0
+#	temp_velocity *= friction
+#	velocity.x = temp_velocity.x
+#	velocity.z = temp_velocity.z
+#	velocity = move_and_slide(velocity, Vector3.UP)
+#	touchBomb = false
 
 
-func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String):
+func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String, color: Color):
+	var material = $Mesh.material_override.duplicate()
+	material.albedo_color = color
+	$Mesh.material_override = material
+	
 	createAllInstanceFragement()
+	
 	speed_vertical = pSpeed_vertical
 	speed_horizontal = pSpeed_horizontal
 	self.global_transform = position
 	velocity = speed_vertical * -direction.basis.z
 	velocity.y = speed_horizontal
 	state = LOADING
-	$AnimationPlayer.play("color")
 	$Timer.start(lapstime)
 	bombOwner = pBombOwner
-
+	
+	$Anim.play("color_anim")
+	#$Mesh.material_override.albedo_color = color
+	
 
 func createAllInstanceFragement():
 	var multiplier = 5.0
@@ -57,6 +76,7 @@ func _on_Timer_timeout():
 		state = EXPLODE
 		
 	elif state == EXPLODE:
+		state = UNKOWN
 		fire()
 
 
@@ -67,9 +87,9 @@ func fire():
 			if fragments[i] != null:
 				fragments[i].fire()
 		$Particles.emitting = true
-		$MeshInstance.visible = false
-		$AnimationPlayer.play("light")
-		yield($AnimationPlayer, "animation_finished")
+		$Mesh.visible = false
+		$Anim.play("light_anim")
+		yield($Anim, "animation_finished")
 		queue_free()
 
 

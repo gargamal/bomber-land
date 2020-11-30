@@ -6,17 +6,18 @@ var camera_change := Vector2.ZERO
 export(float) var cameraAngle := 0.0
 export(float) var mouseSensitivity := 0.3
 
+
 func _ready():
 	add_to_group("player")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _physics_process(delta):
-	ifExit()
-	aim()
-	walkChooseDirection(delta)
-	launchTest()
-	
+	if not isDead:
+		aim()
+		walkChooseDirection(delta)
+		launchTest()
+
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		camera_change = event.relative
@@ -25,12 +26,6 @@ func _input(event):
 func launchTest():
 	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
 		launch($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform())
-
-
-func ifExit():
-	if (Input.is_action_pressed("ui_cancel")):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().quit()
 
 
 func walkChooseDirection(delta):
