@@ -2,7 +2,7 @@ extends Spatial
 
 
 func _ready():
-	Game.registration([$Player.playerName, $IA_poopman.playerName, $IA_shoopy.playerName, $IA_Jose.playerName])
+	Game.registration([$Player.playerName, $IA_Jose.playerName])#$IA_poopman.playerName, $IA_shoopy.playerName, $IA_Jose.playerName])
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

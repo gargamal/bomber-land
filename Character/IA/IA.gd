@@ -5,6 +5,7 @@ var speed = 2.0
 export(Vector3) var direction := Vector3(0.0, 0.0, 1.0)
 
 var changingOnRun = false
+var last_angle = 0.0
 
 
 func _ready():
@@ -15,7 +16,6 @@ func _ready():
 func _physics_process(delta):
 	if not isDead:
 		walk(direction, delta)
-	
 		if not changingOnRun and is_on_wall():
 			changeDirectionAfterWallContact()
 
@@ -30,6 +30,11 @@ func changeDirectionAfterWallContact():
 func changeDirection(newDirection: Vector3):
 	changingOnRun = true
 	$TestWall.start()
+	var angle = acos(newDirection.z / sqrt(newDirection.x * newDirection.x + newDirection.z * newDirection.z)) * (1 if newDirection.x >= 0 else -1)
+	
+	$tw_rotate.interpolate_property(self, "rotation", Vector3(0,last_angle,0), Vector3(0,angle,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$tw_rotate.start()
+	last_angle = angle
 	direction = newDirection
 
 
