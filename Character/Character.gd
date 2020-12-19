@@ -4,6 +4,8 @@ var velocity := Vector3.ZERO
 
 const GRAVITY := -9.8 * 5
 
+enum Jose { BLUE, BROWN, GREEN, ORANGE} 
+
 export(String) var playerName := ""
 export(float) var walkSpeed := 30.0
 export(float) var walkAcceleration := 2.0
@@ -13,6 +15,7 @@ export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
 export(float) var lapstime := 0.5
 export(Color) var color := Color(0.1, 0.1, 0.1, 1.0)
+export(Jose) var jose := Jose.BLUE
 
 var launch_bomb = true
 

@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Character/IA/IA.gd" type="Script" id=1]
-[ext_resource path="res://Character/IA/jose-run.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Character/anim/jose_blue/jose_blue_run.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Character/anim/jose_green/jose_green_run.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Character/anim/jose_orange/jose_orange_run.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Character/anim/jose_brown/jose_brown_run.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.32017
@@ -33,7 +36,20 @@ one_shot = true
 
 [node name="TimeRespawn" type="Timer" parent="."]
 
-[node name="run" parent="." instance=ExtResource( 2 )]
+[node name="jose_blue" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+
+[node name="jose_brown" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+visible = false
+
+[node name="jose_green" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+visible = false
+
+[node name="jose_orange" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+visible = false
 
 [node name="tw_rotate" type="Tween" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

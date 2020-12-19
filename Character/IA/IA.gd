@@ -7,10 +7,21 @@ export(Vector3) var direction := Vector3(0.0, 0.0, 1.0)
 var changingOnRun = false
 var last_angle = 0.0
 
-
 func _ready():
 	add_to_group("IA")
+	
+	$jose_blue.visible = false
+	$jose_brown.visible = false
+	$jose_orange.visible = false
+	$jose_green.visible = false
+	
 	$LaunchCadency.start(lapstime)
+	
+	match jose:
+		Jose.BLUE:	$jose_blue.visible = true
+		Jose.BROWN:	$jose_brown.visible = true
+		Jose.ORANGE:	$jose_orange.visible = true
+		Jose.GREEN:	$jose_green.visible = true
 
 
 func _physics_process(delta):

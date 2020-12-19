@@ -56,7 +56,7 @@ func createMaterial(color: Color):
 
 
 func createAllInstanceFragement():
-	var multiplier = 5.0
+	var multiplier = 4.0
 	for i in range(-multiplier, multiplier, 1):
 		var angle1 = PI * i / multiplier
 		for j in range(-multiplier, multiplier, 1):
