@@ -86,4 +86,4 @@ threads/thread_model=2
 quality/filters/use_nearest_mipmap_filter=true
 quality/voxel_cone_tracing/high_quality=true
 quality/filters/msaa=2
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://game_env.tres"
