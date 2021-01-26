@@ -1,6 +1,7 @@
 extends KinematicBody
 
-onready var _fragment = preload("res://Bomb/Fragment.tscn") 
+const NB_DECTECTOR = 100
+const ROTATE_DECTECTOR = PI / 8.0
 
 var velocity = Vector3.ZERO
 
@@ -11,7 +12,7 @@ const friction = 0.99
 
 enum { UNKOWN, LOADING, EXPLODE }
 var state = UNKOWN
-var fragments = []
+var detectors = []
 var speed_vertical = 0.0
 var speed_horizontal = 0.0
 var firing = false
@@ -20,6 +21,7 @@ var bombOwner
 
 func _ready():
 	add_to_group("bomb")
+	createAllInstanceDetector()
 
 
 func _physics_process(delta):
@@ -35,7 +37,6 @@ func _physics_process(delta):
 
 func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String, color: Color):
 	createMaterial(color)
-	createAllInstanceFragement()
 	
 	speed_vertical = pSpeed_vertical
 	speed_horizontal = pSpeed_horizontal
@@ -55,14 +56,15 @@ func createMaterial(color: Color):
 	$Mesh.material_override = material
 
 
-func createAllInstanceFragement():
-	var multiplier = 4.0
-	for i in range(-multiplier, multiplier, 1):
-		var angle1 = PI * i / multiplier
-		for j in range(-multiplier, multiplier, 1):
-			var angle2 = PI * j / multiplier  
-			fragments.append(createInstanceFragement(6.0 * Vector3(cos(angle1) * cos(angle2), cos(angle1) * sin(angle2), sin(angle1))))
-
+func createAllInstanceDetector():
+	var i = 0
+	var interval = PI * 2 / NB_DECTECTOR
+	
+	detectors.append($detector)
+	while i < NB_DECTECTOR:
+		createInstanceDetector(interval * i)
+		i += 1 
+	
 
 func _on_Timer_timeout():
 	if state == LOADING:
@@ -76,9 +78,7 @@ func _on_Timer_timeout():
 func fire():
 	if not firing:
 		firing = true
-		for i in range(0, fragments.size()):
-			if fragments[i] != null:
-				fragments[i].fire()
+		detection()
 		$Particles.emitting = true
 		$Mesh.visible = false
 		$Anim.play("light_anim")
@@ -86,11 +86,28 @@ func fire():
 		queue_free()
 
 
-func createInstanceFragement(coord: Vector3):
-	var fragment = _fragment.instance()
-	fragment.start(coord)
-	add_child(fragment)
-	return fragment
+func fireBy(pBombOwner):
+	if not firing:
+		self.bombOwner = pBombOwner
+		fire()
+
+
+func detection():
+	for detector in detectors:
+		var body = detector.get_collider()
+		if body != null and (body.is_in_group("player") or body.is_in_group("IA")):
+			body.inFireBomb(bombOwner)
+		elif body != null and body.is_in_group("bomb"):
+			body.fireBy(bombOwner)
+
+
+func createInstanceDetector(angle):
+	$detector.global_rotate(Vector3(1, 0, 0), ROTATE_DECTECTOR)
+	var detector = $detector.duplicate()
+	detector.rotate_y(angle)
+	add_child(detector)
+	detectors.append(detector)
+	return detector
 
 
 func _on_Area_body_entered(body):
