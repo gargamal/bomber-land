@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/cane_of_soda_1.vox-845ba5db03726974a5613626b95a6b9a.mesh"
+
+[deps]
+
+source_file="res://block/cane_of_soda_1.vox"
+dest_files=[ "res://.import/cane_of_soda_1.vox-845ba5db03726974a5613626b95a6b9a.mesh" ]
+
+[params]
+

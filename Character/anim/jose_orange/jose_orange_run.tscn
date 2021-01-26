@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Character/anim/jose_orange/jose_orange_run.fbx" type="PackedScene" id=1]
+[ext_resource path="res://Character/anim/jose_orange/palettemat_003.material" type="Material" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "anim"
@@ -193,6 +194,9 @@ tracks/25/keys = PoolRealArray( 0, 1, 9.62245e-10, -6.98492e-10, -3.56522e-10, 2
 
 [node name="Armature" parent="." index="0"]
 transform = Transform( 1000, 0, 0, 0, 1000, -0.000162921, 0, 0.000162921, 1000, 0, 0, 0 )
+
+[node name="unamed" parent="Armature" index="1"]
+material_override = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "anim"

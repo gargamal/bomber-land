@@ -9,7 +9,6 @@
 script = ExtResource( 2 )
 
 [node name="Room" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302673, -0.911617, 0.09589 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.996672, 0, 0.0815212, 0, 1, 0, -0.0815212, 0, -0.996672, 0, 2, 0 )
@@ -23,27 +22,27 @@ one_shot = true
 autostart = true
 
 [node name="IA_Jose_blue" parent="." instance=ExtResource( 4 )]
-transform = Transform( -0.0733426, 0, 0.997307, 0, 1, 0, -0.997307, 0, -0.0733426, -34.7232, 0, 30.1701 )
+transform = Transform( -0.0733426, 0, 0.997307, 0, 1, 0, -0.997307, 0, -0.0733426, -34.7232, 0, 39.5228 )
 playerName = "Piscine"
 lapstime = 1.0
 color = Color( 0.0392157, 0.141176, 0.945098, 1 )
 
 [node name="IA_Jose_brown" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.159709, 0, -0.987164, 0, 1, 0, 0.987164, 0, 0.159709, 38.0621, 0, -32.5838 )
+transform = Transform( 0.159709, 0, -0.987164, 0, 1, 0, 0.987164, 0, 0.159709, 38.0621, 0, -39.4307 )
 playerName = "Kaka"
 lapstime = 1.0
 color = Color( 0.203922, 0.14902, 0.14902, 1 )
 jose = 1
 
 [node name="IA_Jose_green" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.520697, 0, 0.853742, 0, 1, 0, -0.853742, 0, 0.520697, -39.769, 0, -29.5308 )
+transform = Transform( 0.520697, 0, 0.853742, 0, 1, 0, -0.853742, 0, 0.520697, -39.769, 0, -39.099 )
 playerName = "Lalcolo"
 lapstime = 1.0
 color = Color( 0.156863, 0.772549, 0.152941, 1 )
 jose = 2
 
 [node name="IA_Jose_orange" parent="." instance=ExtResource( 4 )]
-transform = Transform( -0.351482, 0, -0.936195, 0, 1, 0, 0.936195, 0, -0.351482, 39.4835, 0, 30.0752 )
+transform = Transform( -0.351482, 0, -0.936195, 0, 1, 0, 0.936195, 0, -0.351482, 39.4835, 0, 41.0458 )
 playerName = "Agrume"
 lapstime = 1.0
 color = Color( 1, 0.690196, 0.0313726, 1 )

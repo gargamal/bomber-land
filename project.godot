@@ -28,6 +28,10 @@ Game="*res://game.gd"
 window/size/width=1600
 window/size/height=1200
 
+[editor_plugins]
+
+enabled=PoolStringArray( "MagicaVoxelImporter" )
+
 [input]
 
 move_foward={

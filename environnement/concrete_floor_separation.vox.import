@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/concrete_floor_separation.vox-e1f900b7573948e792695376d7bf703d.mesh"
+
+[deps]
+
+source_file="res://environnement/concrete_floor_separation.vox"
+dest_files=[ "res://.import/concrete_floor_separation.vox-e1f900b7573948e792695376d7bf703d.mesh" ]
+
+[params]
+

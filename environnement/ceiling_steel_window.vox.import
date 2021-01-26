@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/ceiling_steel_window.vox-8b3dcdd4693f0f8584bf8959ebf330bd.mesh"
+
+[deps]
+
+source_file="res://environnement/ceiling_steel_window.vox"
+dest_files=[ "res://.import/ceiling_steel_window.vox-8b3dcdd4693f0f8584bf8959ebf330bd.mesh" ]
+
+[params]
+

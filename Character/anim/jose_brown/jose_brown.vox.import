@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/jose_brown.vox-a10c574d86cd5309a9e5621d013fe81a.mesh"
+
+[deps]
+
+source_file="res://Character/anim/jose_brown/jose_brown.vox"
+dest_files=[ "res://.import/jose_brown.vox-a10c574d86cd5309a9e5621d013fe81a.mesh" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/wall_steel.vox-9f140741d454ae892754794b64e62e04.mesh"
+
+[deps]
+
+source_file="res://environnement/wall_steel.vox"
+dest_files=[ "res://.import/wall_steel.vox-9f140741d454ae892754794b64e62e04.mesh" ]
+
+[params]
+

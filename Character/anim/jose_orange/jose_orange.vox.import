@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/jose_orange.vox-f5451976538863503aecf5022adb295f.mesh"
+
+[deps]
+
+source_file="res://Character/anim/jose_orange/jose_orange.vox"
+dest_files=[ "res://.import/jose_orange.vox-f5451976538863503aecf5022adb295f.mesh" ]
+
+[params]
+

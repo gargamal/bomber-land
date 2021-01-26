@@ -1,0 +1,13 @@
+[remap]
+
+importer="MagicaVoxel-Importer"
+type="Mesh"
+path="res://.import/barrels_blue.vox-30cfe3d95220d76a94328749f19c64e3.mesh"
+
+[deps]
+
+source_file="res://block/barrels_blue.vox"
+dest_files=[ "res://.import/barrels_blue.vox-30cfe3d95220d76a94328749f19c64e3.mesh" ]
+
+[params]
+
