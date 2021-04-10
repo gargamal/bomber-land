@@ -1,6 +1,6 @@
 [remap]
 
-importer="MagicaVoxel-Importer"
+importer="MagicaVoxel.With.Extensions"
 type="Mesh"
 path="res://.import/ceiling_steel_window.vox-8b3dcdd4693f0f8584bf8959ebf330bd.mesh"
 
@@ -11,3 +11,6 @@ dest_files=[ "res://.import/ceiling_steel_window.vox-8b3dcdd4693f0f8584bf8959ebf
 
 [params]
 
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false

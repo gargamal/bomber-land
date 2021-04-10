@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/concrete_floor.vox-bf5fe09ef1ba1303788aa7c5990518db.mesh"
+
+[deps]
+
+source_file="res://environnement/concrete_floor.vox"
+dest_files=[ "res://.import/concrete_floor.vox-bf5fe09ef1ba1303788aa7c5990518db.mesh" ]
+
+[params]
+
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false

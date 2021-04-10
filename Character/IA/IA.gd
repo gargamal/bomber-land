@@ -9,19 +9,26 @@ var last_angle = 0.0
 
 func _ready():
 	add_to_group("IA")
-	
-	$jose_blue.visible = false
-	$jose_brown.visible = false
-	$jose_orange.visible = false
-	$jose_green.visible = false
+	scale = Vector3(scale_character, scale_character, scale_character)
+	var ia_obj = [$bull, $cromagnon,$cyclop, $dino, $dwarf, $jose, $leg, $mago, $monster, $octopus, $rabbit, $tramp]
+	for obj in ia_obj:
+		obj.visible = false
 	
 	$LaunchCadency.start(lapstime)
 	
-	match jose:
-		Jose.BLUE:	$jose_blue.visible = true
-		Jose.BROWN:	$jose_brown.visible = true
-		Jose.ORANGE:	$jose_orange.visible = true
-		Jose.GREEN:	$jose_green.visible = true
+	match character:
+		Character.BULL:	$bull.visible = true
+		Character.CROMAGNON:	$cromagnon.visible = true
+		Character.CYCLOP:	$cyclop.visible = true
+		Character.DINO:	$dino.visible = true
+		Character.DWARF:	$dwarf.visible = true
+		Character.JOSE:	$jose.visible = true
+		Character.LEG:	$leg.visible = true
+		Character.MAGO:	$mago.visible = true
+		Character.MONSTER:	$monster.visible = true
+		Character.OCTOPUS:	$octopus.visible = true
+		Character.RABBIT:	$rabbit.visible = true
+		Character.TRAMP:	$tramp.visible = true
 
 
 func _physics_process(delta):
@@ -33,20 +40,20 @@ func _physics_process(delta):
 
 func changeDirectionAfterWallContact():
 	if direction.x != 0:
-		changeDirection(Game.randArray([Vector3(0, 0, 1), Vector3(0, 0, -1), Vector3(direction.x * -1, 0, 0), Vector3(direction.x * -1, 0, 1), Vector3(direction.x * -1, 0, -1)]))
+		changeDirection(Game.randArray([Vector2(0, 1), Vector2(0, -1), Vector2(direction.x * -1, 0), Vector2(direction.x * -1, 1), Vector2(direction.x * -1, -1)]))
 	elif direction.z != 0:
-		changeDirection(Game.randArray([Vector3(1, 0, 0), Vector3(-1, 0, 0), Vector3(0, 0, direction.z * -1), Vector3(1, 0, direction.z * -1), Vector3(-1, 0, direction.z * -1)]))
+		changeDirection(Game.randArray([Vector2(1, 0), Vector2(-1, 0), Vector2(0, direction.z * -1), Vector2(1, direction.z * -1), Vector2(-1, direction.z * -1)]))
 
 
-func changeDirection(newDirection: Vector3):
+func changeDirection(newDirection: Vector2):
 	changingOnRun = true
 	$TestWall.start()
-	var angle = acos(newDirection.z / sqrt(newDirection.x * newDirection.x + newDirection.z * newDirection.z)) * (1 if newDirection.x >= 0 else -1)
+	var angle = acos(newDirection.y / sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y)) * (1 if newDirection.x >= 0 else -1)
 	
 	$tw_rotate.interpolate_property(self, "rotation", Vector3(0,last_angle,0), Vector3(0,angle,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$tw_rotate.start()
 	last_angle = angle
-	direction = newDirection
+	direction = Vector3(newDirection.x, 0, newDirection.y)
 
 
 func _on_TestWall_timeout():

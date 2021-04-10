@@ -12,13 +12,14 @@ albedo_color = Color( 0.117647, 0.172549, 0.764706, 1 )
 [sub_resource type="CapsuleMesh" id=3]
 
 [node name="Player" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0 )
 collision_layer = 16
 collision_mask = 63
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+scale_character = 3.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1, 0 )
@@ -30,10 +31,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14016, 0 )
 [node name="Camera" type="Camera" parent="Head"]
 doppler_tracking = 1
 current = true
-far = 200.0
+far = 500.0
 
 [node name="Launch" type="Position3D" parent="Head/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.34723 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.7, 0, 0, 0, -3.0598e-08, -1.4, 0, 0.7, -6.11959e-08, 0, 1, 0 )

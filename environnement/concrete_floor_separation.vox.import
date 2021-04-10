@@ -1,6 +1,6 @@
 [remap]
 
-importer="MagicaVoxel-Importer"
+importer="MagicaVoxel.With.Extensions"
 type="Mesh"
 path="res://.import/concrete_floor_separation.vox-e1f900b7573948e792695376d7bf703d.mesh"
 
@@ -11,3 +11,6 @@ dest_files=[ "res://.import/concrete_floor_separation.vox-e1f900b7573948e7926953
 
 [params]
 
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false

@@ -2,48 +2,72 @@
 
 [ext_resource path="res://Character/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=2]
-[ext_resource path="res://room/Room.tscn" type="PackedScene" id=3]
+[ext_resource path="res://room/warehouse.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Character/IA/IA.tscn" type="PackedScene" id=4]
 
 [node name="MainScene" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="Room" parent="." instance=ExtResource( 3 )]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.996672, 0, 0.0815212, 0, 1, 0, -0.0815212, 0, -0.996672, 0, 2, 0 )
-playerName = "Rogger"
-speed_shoot = 30.0
-color = Color( 1, 0, 0.819608, 1 )
 
 [node name="EndGame" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="IA_Jose_blue" parent="." instance=ExtResource( 4 )]
-transform = Transform( -0.0733426, 0, 0.997307, 0, 1, 0, -0.997307, 0, -0.0733426, -34.7232, 0, 39.5228 )
+[node name="IA_one" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.0733426, 0, 0.997307, 0, 1, 0, -0.997307, 0, -0.0733426, -88.1161, 7.81489, 35.8575 )
 playerName = "Piscine"
-lapstime = 1.0
+walkSpeed = 60.0
+walkAcceleration = 6.0
+speed_lauch = 30.0
+speed_shoot = 30.0
+speed_fly = 30.0
+lapstime = 1.5
 color = Color( 0.0392157, 0.141176, 0.945098, 1 )
+character = 0
+scale_character = 0.45
 
-[node name="IA_Jose_brown" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.159709, 0, -0.987164, 0, 1, 0, 0.987164, 0, 0.159709, 38.0621, 0, -39.4307 )
+[node name="IA_two" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.159709, 0, -0.987164, 0, 1, 0, 0.987164, 0, 0.159709, 88.0762, 4.08793, -123.224 )
 playerName = "Kaka"
-lapstime = 1.0
+walkSpeed = 80.0
+speed_lauch = 20.0
+speed_shoot = 20.0
+lapstime = 1.2
 color = Color( 0.203922, 0.14902, 0.14902, 1 )
-jose = 1
+character = 1
+scale_character = 0.45
 
-[node name="IA_Jose_green" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.520697, 0, 0.853742, 0, 1, 0, -0.853742, 0, 0.520697, -39.769, 0, -39.099 )
+[node name="IA_three" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.238212, 0, 0.971214, 0, 1, 0, -0.971214, 0, -0.238212, -115.933, 10.6099, -106.893 )
 playerName = "Lalcolo"
+walkSpeed = 40.0
+speed_lauch = 60.0
+speed_shoot = 60.0
+speed_fly = 60.0
 lapstime = 1.0
 color = Color( 0.156863, 0.772549, 0.152941, 1 )
-jose = 2
+character = 2
+scale_character = 0.45
 
-[node name="IA_Jose_orange" parent="." instance=ExtResource( 4 )]
-transform = Transform( -0.351482, 0, -0.936195, 0, 1, 0, 0.936195, 0, -0.351482, 39.4835, 0, 41.0458 )
+[node name="IA_four" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.0503317, 0, 0.998733, 0, 1, 0, -0.998733, 0, -0.0503317, 95.1741, 6.23541, 43.2178 )
 playerName = "Agrume"
+walkSpeed = 60.0
+speed_lauch = 40.0
+speed_shoot = 40.0
+speed_fly = 40.0
 lapstime = 1.0
 color = Color( 1, 0.690196, 0.0313726, 1 )
+scale_character = 0.45
+
+[node name="room" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5685, 16.7553, 39.2373 )
+walkSpeed = 60.0
+walkAcceleration = 6.0
+speed_lauch = 40.0
+speed_shoot = 40.0
+speed_fly = 40.0
+color = Color( 0.972549, 0.0588235, 0.913725, 1 )
 [connection signal="timeout" from="EndGame" to="." method="_on_EndGame_timeout"]

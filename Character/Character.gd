@@ -2,9 +2,9 @@ extends KinematicBody
 
 var velocity := Vector3.ZERO
 
-const GRAVITY := -9.8 * 5
+const GRAVITY := -9.8 * 50
 
-enum Jose { BLUE, BROWN, GREEN, ORANGE} 
+enum Character { BULL, CROMAGNON, CYCLOP, DINO, DWARF, JOSE, LEG, MAGO, MONSTER, OCTOPUS, RABBIT, TRAMP } 
 
 export(String) var playerName := ""
 export(float) var walkSpeed := 30.0
@@ -15,7 +15,9 @@ export(float) var speed_shoot := 10.0
 export(float) var speed_fly := 20.0
 export(float) var lapstime := 0.5
 export(Color) var color := Color(0.1, 0.1, 0.1, 1.0)
-export(Jose) var jose := Jose.BLUE
+export(Character) var character := Character.JOSE
+export(float) var scale_character := 0.2
+export(float) var scale_bomb := 2.5
 
 var launch_bomb = true
 
@@ -29,6 +31,7 @@ func launch(position : Transform, direction : Transform):
 	bomb = _bomb.instance()
 	get_parent().add_child(bomb)
 	bomb.start(position, direction, speed_lauch, speed_fly, playerName, color)
+	bomb.scale = Vector3(scale_bomb, scale_bomb, scale_bomb)
 	$Timer.start(lapstime)
 	launch_bomb = false
 
@@ -68,8 +71,9 @@ func inFireBomb(whoseIsBomb :String):
 
 
 func _on_TimeRespawn_timeout():
-	var room = get_parent().get_node("Room")
+	var room = get_parent().get_node("room")
 	global_transform = room.getRespawn()
+	scale = Vector3(scale_character, scale_character, scale_character)
 	isDead = false
 	visible = true
 	$TimeRespawn.stop()

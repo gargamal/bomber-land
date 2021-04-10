@@ -74,6 +74,7 @@ tracks/1/keys = {
 }
 
 [node name="Bomb" type="KinematicBody"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 collision_layer = 4
 collision_mask = 63
 script = ExtResource( 1 )
@@ -119,7 +120,7 @@ anims/light_anim = SubResource( 8 )
 
 [node name="detector" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 8, 0, 8 )
+cast_to = Vector3( 16, 0, 16 )
 collision_mask = 54
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

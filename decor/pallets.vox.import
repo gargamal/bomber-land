@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/pallets.vox-acc68aac9559a8b3923985eafbf2148a.mesh"
+
+[deps]
+
+source_file="res://decor/pallets.vox"
+dest_files=[ "res://.import/pallets.vox-acc68aac9559a8b3923985eafbf2148a.mesh" ]
+
+[params]
+
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false

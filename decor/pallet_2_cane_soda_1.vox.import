@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/pallet_2_cane_soda_1.vox-36aaf78c8cce3deac435c6b6d078436e.mesh"
+
+[deps]
+
+source_file="res://decor/pallet_2_cane_soda_1.vox"
+dest_files=[ "res://.import/pallet_2_cane_soda_1.vox-36aaf78c8cce3deac435c6b6d078436e.mesh" ]
+
+[params]
+
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false

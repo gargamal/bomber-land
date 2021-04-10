@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://environnement/ceiling_steel_ligth.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://environnement/ceiling_steel_window.vox" type="ArrayMesh" id=2]
+[ext_resource path="res://environnement/ceiling_steel.vox" type="ArrayMesh" id=3]
+[ext_resource path="res://material/steal_plate.material" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 25, 2, 25 )
+
+[node name="prepa" type="Spatial"]
+
+[node name="celling" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017, 0, 60 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="celling"]
+collision_mask = 30
+
+[node name="CollisionShape" type="CollisionShape" parent="celling/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="celling_window" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="celling_window"]
+collision_mask = 30
+
+[node name="CollisionShape" type="CollisionShape" parent="celling_window/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="celling_ligth" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="celling_ligth"]
+collision_mask = 30
+
+[node name="CollisionShape" type="CollisionShape" parent="celling_ligth/StaticBody"]
+shape = SubResource( 1 )

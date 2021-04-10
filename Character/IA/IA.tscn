@@ -1,14 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Character/IA/IA.gd" type="Script" id=1]
-[ext_resource path="res://Character/anim/jose_blue/jose_blue_run.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Character/anim/jose_green/jose_green_run.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Character/anim/jose_orange/jose_orange_run.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Character/anim/jose_brown/jose_brown_run.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Character/anim/dino.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Character/anim/dwarf.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Character/anim/jose.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Character/anim/cyclop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Character/anim/octopus.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Character/anim/tramp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Character/anim/rabbit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Character/anim/bull.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Character/anim/cromagnon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Character/anim/Leg.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Character/anim/mago.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Character/anim/monster.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 1.32017
-height = 1.61479
+radius = 10.0
+height = 25.0
 
 [node name="IA" type="KinematicBody"]
 collision_layer = 2147483680
@@ -19,12 +27,8 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.10818, 0 )
-visible = false
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23, 0 )
 shape = SubResource( 1 )
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -36,19 +40,41 @@ one_shot = true
 
 [node name="TimeRespawn" type="Timer" parent="."]
 
-[node name="jose_blue" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
-
-[node name="jose_brown" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+[node name="bull" parent="." instance=ExtResource( 9 )]
 visible = false
 
-[node name="jose_green" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+[node name="cromagnon" parent="." instance=ExtResource( 10 )]
 visible = false
 
-[node name="jose_orange" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+[node name="cyclop" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="dino" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="dwarf" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="jose" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="leg" parent="." instance=ExtResource( 11 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+visible = false
+
+[node name="mago" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="monster" parent="." instance=ExtResource( 13 )]
+visible = false
+
+[node name="octopus" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="rabbit" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="tramp" parent="." instance=ExtResource( 7 )]
 visible = false
 
 [node name="tw_rotate" type="Tween" parent="."]

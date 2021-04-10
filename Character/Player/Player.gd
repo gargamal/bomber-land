@@ -9,6 +9,7 @@ export(float) var mouseSensitivity := 0.3
 
 func _ready():
 	add_to_group("player")
+	scale = Vector3(scale_character, scale_character, scale_character)
 
 
 func _physics_process(delta):

@@ -5,7 +5,7 @@ var score = {}
 enum {KILL, AUTO_KILL}
 
 
-func randArray(list :Array)-> Vector3:
+func randArray(list :Array)-> Vector2:
 	randomize()
 	return list[randi() % list.size()]
 

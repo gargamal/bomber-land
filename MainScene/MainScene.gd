@@ -2,7 +2,7 @@ extends Spatial
 
 
 func _ready():
-	Game.registration([$Player.playerName, $IA_Jose_blue.playerName, $IA_Jose_brown.playerName, $IA_Jose_orange.playerName, $IA_Jose_green.playerName])
+	Game.registration([$Player.playerName, $IA_one.playerName, $IA_two.playerName, $IA_three.playerName, $IA_four.playerName])
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -21,4 +21,4 @@ func ifExit():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().quit()
 	elif Input.is_action_pressed("ui_restart"): 
-		get_tree().change_scene("res://MainScene/MainScene.tscn")
+		var _err = get_tree().change_scene("res://MainScene/MainScene.tscn")

@@ -1,0 +1,398 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://decor/pallets.vox" type="ArrayMesh" id=1]
+[ext_resource path="res://material/pallet.material" type="Material" id=2]
+[ext_resource path="res://decor/pallet_1_cane_soda_2.vox" type="ArrayMesh" id=3]
+[ext_resource path="res://decor/pallet_1_cane_soda_3.vox" type="ArrayMesh" id=4]
+[ext_resource path="res://decor/pallet_1_cane_soda_1.vox" type="ArrayMesh" id=5]
+[ext_resource path="res://decor/pallet_1_cane_soda_4.vox" type="ArrayMesh" id=6]
+[ext_resource path="res://decor/pallet_1_barrel_gray.vox" type="ArrayMesh" id=7]
+[ext_resource path="res://decor/pallet_1_barrel_blue.vox" type="ArrayMesh" id=8]
+[ext_resource path="res://decor/pallet_2_barrel_blue.vox" type="ArrayMesh" id=9]
+[ext_resource path="res://decor/pallet_2_barrel_gray.vox" type="ArrayMesh" id=10]
+[ext_resource path="res://decor/pallet_2_cane_soda_1.vox" type="ArrayMesh" id=11]
+[ext_resource path="res://decor/pallet_2_cane_soda_4.vox" type="ArrayMesh" id=12]
+[ext_resource path="res://decor/pallet_2_cane_soda_2.vox" type="ArrayMesh" id=13]
+[ext_resource path="res://decor/pallet_2_cane_soda_3.vox" type="ArrayMesh" id=14]
+[ext_resource path="res://decor/pallet_3_barrel_blue.vox" type="ArrayMesh" id=15]
+[ext_resource path="res://decor/pallet_3_barrel_gray.vox" type="ArrayMesh" id=16]
+[ext_resource path="res://decor/pallet_3_cane_soda_1.vox" type="ArrayMesh" id=17]
+[ext_resource path="res://decor/pallet_3_cane_soda_3.vox" type="ArrayMesh" id=18]
+[ext_resource path="res://decor/pallet_3_cane_soda_2.vox" type="ArrayMesh" id=19]
+[ext_resource path="res://decor/pallet_3_cane_soda_4.vox" type="ArrayMesh" id=20]
+[ext_resource path="res://decor/pallet_4_cane_soda_1.vox" type="ArrayMesh" id=21]
+[ext_resource path="res://decor/pallet_4_barrel_blue.vox" type="ArrayMesh" id=22]
+[ext_resource path="res://decor/pallet_4_cane_soda_4.vox" type="ArrayMesh" id=23]
+[ext_resource path="res://decor/pallet_4_cane_soda_2.vox" type="ArrayMesh" id=24]
+[ext_resource path="res://decor/pallet_4_barrel_gray.vox" type="ArrayMesh" id=25]
+[ext_resource path="res://decor/pallet_4_cane_soda_3.vox" type="ArrayMesh" id=26]
+[ext_resource path="res://decor/car.vox" type="ArrayMesh" id=27]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="BoxShape" id=26]
+
+[sub_resource type="BoxShape" id=45]
+
+[sub_resource type="BoxShape" id=58]
+extents = Vector3( 1, 1.8663, 1 )
+
+[sub_resource type="BoxShape" id=65]
+
+[sub_resource type="BoxShape" id=78]
+
+[sub_resource type="BoxShape" id=85]
+
+[node name="prepa_decor" type="Spatial"]
+
+[node name="pallets" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="pallets"]
+
+[node name="CollisionShape" type="CollisionShape" parent="pallets/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 7.5, 0, 0, 0, 10, 0, 7.5, 0 )
+shape = SubResource( 3 )
+
+[node name="cane_soda_1_1" type="MeshInstance" parent="."]
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_1_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_1_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="cane_soda_1_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_1_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_1_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="cane_soda_1_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_1_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_1_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="cane_soda_1_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_1_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_1_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="barrel_blue_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120 )
+mesh = ExtResource( 8 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_blue_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_blue_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="barrel_gray_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 150 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_gray_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_gray_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 5.5, 0, 0, 0, 10, 0, 5.5, 0 )
+shape = SubResource( 7 )
+
+[node name="cane_soda_2_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -0.113922 )
+mesh = ExtResource( 11 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_2_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_2_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 11, 0, 0, 0, 10, 0, 11, 0 )
+shape = SubResource( 26 )
+
+[node name="cane_soda_2_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30 )
+mesh = ExtResource( 13 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_2_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_2_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 11, 0, 0, 0, 10, 0, 11, 0 )
+shape = SubResource( 26 )
+
+[node name="cane_soda_2_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 60 )
+mesh = ExtResource( 14 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_2_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_2_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 11, 0, 0, 0, 10, 0, 11, 0 )
+shape = SubResource( 26 )
+
+[node name="cane_soda_2_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 90 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_2_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_2_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 11, 0, 0, 0, 10, 0, 11, 0 )
+shape = SubResource( 26 )
+
+[node name="barrel_blue_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 120 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_blue_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_blue_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 12.5, 0, 0, 0, 10, 0, 12.5, 0 )
+shape = SubResource( 26 )
+
+[node name="barrel_gray_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 150 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_gray_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_gray_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 12.5, 0, 0, 0, 10, 0, 12.5, 0 )
+shape = SubResource( 26 )
+
+[node name="cane_soda_3_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0 )
+mesh = ExtResource( 17 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_3_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_3_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 16.5, 0, 0, 0, 10, 0, 16.5, 0 )
+shape = SubResource( 45 )
+
+[node name="cane_soda_3_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 30 )
+mesh = ExtResource( 19 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_3_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_3_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 16.5, 0, 0, 0, 10, 0, 16.5, 0 )
+shape = SubResource( 45 )
+
+[node name="cane_soda_3_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 60 )
+mesh = ExtResource( 18 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_3_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_3_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 16.5, 0, 0, 0, 10, 0, 16.5, 0 )
+shape = SubResource( 45 )
+
+[node name="cane_soda_3_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 90 )
+mesh = ExtResource( 20 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_3_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_3_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 16.5, 0, 0, 0, 10, 0, 16.5, 0 )
+shape = SubResource( 45 )
+
+[node name="barrel_blue_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 120 )
+mesh = ExtResource( 15 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_blue_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_blue_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 18.75, 0 )
+shape = SubResource( 58 )
+
+[node name="barrel_gray_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 150 )
+mesh = ExtResource( 16 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_gray_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_gray_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 18.75, 0 )
+shape = SubResource( 58 )
+
+[node name="cane_soda_4_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 0 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_4_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_4_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 22, 0, 0, 0, 10, 0, 22, 0 )
+shape = SubResource( 65 )
+
+[node name="cane_soda_4_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 30 )
+mesh = ExtResource( 24 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_4_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_4_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 22, 0, 0, 0, 10, 0, 22, 0 )
+shape = SubResource( 65 )
+
+[node name="cane_soda_4_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 60 )
+mesh = ExtResource( 26 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_4_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_4_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 22, 0, 0, 0, 10, 0, 22, 0 )
+shape = SubResource( 65 )
+
+[node name="cane_soda_4_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 90 )
+mesh = ExtResource( 23 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="cane_soda_4_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="cane_soda_4_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 22, 0, 0, 0, 10, 0, 22, 0 )
+shape = SubResource( 65 )
+
+[node name="barrel_blue_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 120 )
+mesh = ExtResource( 22 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_blue_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_blue_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 25, 0, 0, 0, 10, 0, 25, 0 )
+shape = SubResource( 78 )
+
+[node name="barrel_gray_4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 150 )
+mesh = ExtResource( 25 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="barrel_gray_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="barrel_gray_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 25, 0, 0, 0, 10, 0, 25, 0 )
+shape = SubResource( 78 )
+
+[node name="vehicule_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="vehicule_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="vehicule_1/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10.5, 0, 0, 0, 11, 0, 10.5, 1 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="vehicule_1/StaticBody"]
+transform = Transform( 9.5, 0, 0, 0, 4.75, 0, 0, 0, 2, 0, 4.75, -11.5 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="vehicule_1/StaticBody"]
+transform = Transform( 7.5, 0, 0, 0, 1.25, 0, 0, 0, 4, 0, 1.25, 16 )
+shape = SubResource( 85 )
+
+[node name="vehicule_2" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 30, 0, -35 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="vehicule_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="vehicule_2/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10.5, 0, 0, 0, 11, 0, 10.5, 1 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="vehicule_2/StaticBody"]
+transform = Transform( 9.5, 0, 0, 0, 4.75, 0, 0, 0, 2, 0, 4.75, -11.5 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="vehicule_2/StaticBody"]
+transform = Transform( 7.5, 0, 0, 0, 1.25, 0, 0, 0, 4, 0, 1.25, 16 )
+shape = SubResource( 85 )
+
+[node name="vehicule_3" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -40, 0, -40 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="vehicule_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="vehicule_3/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10.5, 0, 0, 0, 11, 0, 10.5, 1 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="vehicule_3/StaticBody"]
+transform = Transform( 9.5, 0, 0, 0, 4.75, 0, 0, 0, 2, 0, 4.75, -11.5 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="vehicule_3/StaticBody"]
+transform = Transform( 7.5, 0, 0, 0, 1.25, 0, 0, 0, 4, 0, 1.25, 16 )
+shape = SubResource( 85 )
+
+[node name="vehicule_4" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -75, 0, -40 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="vehicule_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="vehicule_4/StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10.5, 0, 0, 0, 11, 0, 10.5, 1 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="vehicule_4/StaticBody"]
+transform = Transform( 9.5, 0, 0, 0, 4.75, 0, 0, 0, 2, 0, 4.75, -11.5 )
+shape = SubResource( 85 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="vehicule_4/StaticBody"]
+transform = Transform( 7.5, 0, 0, 0, 1.25, 0, 0, 0, 4, 0, 1.25, 16 )
+shape = SubResource( 85 )

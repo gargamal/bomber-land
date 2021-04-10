@@ -7,7 +7,7 @@ var velocity = Vector3.ZERO
 
 export (float) var lapstime = 1.5
 
-const GRAVITY := -9.8 * 5
+const GRAVITY := -9.8 * 10
 const friction = 0.99
 
 enum { UNKOWN, LOADING, EXPLODE }

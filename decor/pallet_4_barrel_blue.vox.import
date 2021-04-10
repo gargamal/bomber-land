@@ -1,0 +1,16 @@
+[remap]
+
+importer="MagicaVoxel.With.Extensions"
+type="Mesh"
+path="res://.import/pallet_4_barrel_blue.vox-e74c2d2589f96cf0203de94679871206.mesh"
+
+[deps]
+
+source_file="res://decor/pallet_4_barrel_blue.vox"
+dest_files=[ "res://.import/pallet_4_barrel_blue.vox-e74c2d2589f96cf0203de94679871206.mesh" ]
+
+[params]
+
+Scale=0.5
+GreedyMeshGenerator=true
+SnapToGround=false
