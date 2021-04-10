@@ -2,7 +2,7 @@ extends KinematicBody
 
 var velocity := Vector3.ZERO
 
-const GRAVITY := -9.8 * 50
+const GRAVITY := -2500
 
 enum Character { BULL, CROMAGNON, CYCLOP, DINO, DWARF, JOSE, LEG, MAGO, MONSTER, OCTOPUS, RABBIT, TRAMP } 
 
@@ -30,7 +30,7 @@ var bomb = null
 func launch(position : Transform, direction : Transform):
 	bomb = _bomb.instance()
 	get_parent().add_child(bomb)
-	bomb.start(position, direction, speed_lauch, speed_fly, playerName, color)
+	bomb.start(position, direction, speed_lauch, speed_fly, self, color)
 	bomb.scale = Vector3(scale_bomb, scale_bomb, scale_bomb)
 	$Timer.start(lapstime)
 	launch_bomb = false
@@ -60,11 +60,11 @@ func _on_Timer_timeout():
 	launch_bomb = true
 	
 	
-func inFireBomb(whoseIsBomb :String):
+func inFireBomb(whoseIsBomb :KinematicBody):
 	if not isDead:
 		isDead = true
 		visible = false
-		Game.addKill(playerName, whoseIsBomb)
+		Game.addKill(whoseIsBomb.playerName, playerName)
 		translate(Vector3(0, 20.0, 0))
 		rotate(Vector3(1, 0, 0), -PI / 2.0)
 		$TimeRespawn.start(2.0)

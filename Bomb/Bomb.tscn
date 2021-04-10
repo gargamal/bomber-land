@@ -106,6 +106,7 @@ shadow_enabled = true
 omni_range = 0.0
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
 collision_layer = 4
 collision_mask = 31
 

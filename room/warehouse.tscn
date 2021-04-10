@@ -30,7 +30,9 @@ emission_on_uv2 = false
 [node name="warehouse" type="Spatial"]
 script = ExtResource( 5 )
 
-[node name="celling" type="GridMap" parent="."]
+[node name="celling" type="GridMap" parent="." groups=[
+"environnement",
+]]
 transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 0, 100, 0 )
 visible = false
 mesh_library = ExtResource( 2 )
@@ -392,7 +394,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="floor" type="GridMap" parent="."]
+[node name="floor" type="GridMap" parent="." groups=[
+"environnement",
+]]
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 50, 1, 25 )
 data = {
@@ -402,7 +406,9 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="wall_left" type="GridMap" parent="."]
+[node name="wall_left" type="GridMap" parent="." groups=[
+"environnement",
+]]
 transform = Transform( -1.62921e-07, -1, 0, -1.62921e-07, 2.65431e-14, -1, 1, -1.62921e-07, -1.62921e-07, 150, 0, 0 )
 visible = false
 mesh_library = ExtResource( 3 )
@@ -414,7 +420,9 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="wall_right" type="GridMap" parent="."]
+[node name="wall_right" type="GridMap" parent="." groups=[
+"environnement",
+]]
 transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -150, 0, 0 )
 visible = false
 mesh_library = ExtResource( 3 )
@@ -427,7 +435,9 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 3, 0 )
 }
 
-[node name="wall_front" type="GridMap" parent="."]
+[node name="wall_front" type="GridMap" parent="." groups=[
+"environnement",
+]]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 100, 0, -250 )
 visible = false
 mesh_library = ExtResource( 3 )
@@ -439,7 +449,9 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="wall_back" type="GridMap" parent="."]
+[node name="wall_back" type="GridMap" parent="." groups=[
+"environnement",
+]]
 transform = Transform( -1, -3.25841e-07, 5.30863e-14, 0, -1.62921e-07, -1, 3.25841e-07, -1, 1.62921e-07, 100, 0, 200 )
 visible = false
 mesh_library = ExtResource( 3 )
@@ -452,7 +464,9 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="deco" type="GridMap" parent="."]
+[node name="deco" type="GridMap" parent="." groups=[
+"environnement",
+]]
 mesh_library = ExtResource( 6 )
 cell_size = Vector3( 25, 1, 25 )
 data = {

@@ -26,7 +26,15 @@ func _input(event):
 
 func launchTest():
 	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
-		launch($Head/Camera/Launch.global_transform, $Head/Camera.get_camera_transform())
+		var transform_direction = $Head/Camera.get_camera_transform()
+		transform_direction.basis.z *= -1
+		launch(get_position(), transform_direction)
+
+
+func get_position():
+	var transform_position = $Head/Camera/Launch.global_transform
+	transform_position.basis.z *= -1
+	return transform_position
 
 
 func walkChooseDirection(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Character/IA/IA.gd" type="Script" id=1]
 [ext_resource path="res://Character/anim/dino.tscn" type="PackedScene" id=2]
@@ -16,6 +16,12 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 10.0
+height = 25.0
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 16.0
 height = 25.0
 
 [node name="IA" type="KinematicBody"]
@@ -41,7 +47,6 @@ one_shot = true
 [node name="TimeRespawn" type="Timer" parent="."]
 
 [node name="bull" parent="." instance=ExtResource( 9 )]
-visible = false
 
 [node name="cromagnon" parent="." instance=ExtResource( 10 )]
 visible = false
@@ -78,7 +83,25 @@ visible = false
 visible = false
 
 [node name="tw_rotate" type="Tween" parent="."]
+
+[node name="Launch" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5195, 20.4491 )
+
+[node name="debug" type="MeshInstance" parent="Launch"]
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23, 0 )
+shape = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="TestWall" to="." method="_on_TestWall_timeout"]
 [connection signal="timeout" from="LaunchCadency" to="." method="_on_LaunchCadency_timeout"]
 [connection signal="timeout" from="TimeRespawn" to="." method="_on_TimeRespawn_timeout"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

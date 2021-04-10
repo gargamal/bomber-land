@@ -56,11 +56,19 @@ func changeDirection(newDirection: Vector2):
 	direction = Vector3(newDirection.x, 0, newDirection.y)
 
 
+func get_position():
+	return $Launch.global_transform
+
+
 func _on_TestWall_timeout():
 	changingOnRun = false
 
 
 func _on_LaunchCadency_timeout():
 	if not isDead:
-		launch(global_transform, global_transform)
+		launch(get_position(), global_transform)
 
+
+func _on_Area_body_entered(body):
+	if body.is_in_group("bomb"):
+		body.push_bomb(self)

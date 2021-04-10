@@ -7,16 +7,15 @@ var velocity = Vector3.ZERO
 
 export (float) var lapstime = 1.5
 
-const GRAVITY := -9.8 * 10
-const friction = 0.99
+const GRAVITY := -250
+const FRICTION := 0.99
 
 enum { UNKOWN, LOADING, EXPLODE }
 var state = UNKOWN
 var detectors = []
-var speed_vertical = 0.0
-var speed_horizontal = 0.0
 var firing = false
 var bombOwner
+var hasTouchEnvironnementFirst = false
 
 
 func _ready():
@@ -29,20 +28,18 @@ func _physics_process(delta):
 	
 	var temp_velocity = velocity
 	temp_velocity.y = 0.0
-	temp_velocity *= friction
+	temp_velocity *= FRICTION
 	velocity.x = temp_velocity.x
 	velocity.z = temp_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 
-func start(position : Transform, direction : Transform, pSpeed_vertical : float, pSpeed_horizontal : float, pBombOwner : String, color: Color):
+func start(position :Transform, direction :Transform, speed_lauch :float, speed_fly :float, pBombOwner :KinematicBody, color :Color):
 	createMaterial(color)
 	
-	speed_vertical = pSpeed_vertical
-	speed_horizontal = pSpeed_horizontal
 	self.global_transform = position
-	velocity = speed_vertical * -direction.basis.z
-	velocity.y = speed_horizontal
+	velocity = speed_lauch * direction.basis.z
+	velocity.y = velocity.y + speed_fly
 	state = LOADING
 	bombOwner = pBombOwner
 	
@@ -101,6 +98,11 @@ func detection():
 			body.fireBy(bombOwner)
 
 
+func push_bomb(body):
+	velocity = body.speed_shoot * body.get_position().basis.z
+	velocity.y = velocity.y + body.speed_fly
+
+
 func createInstanceDetector(angle):
 	$detector.global_rotate(Vector3(1, 0, 0), ROTATE_DECTECTOR)
 	var detector = $detector.duplicate()
@@ -112,6 +114,12 @@ func createInstanceDetector(angle):
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player") or body.is_in_group("IA"):
-		velocity = speed_vertical * 4.0 * -transform.basis.z
-		velocity.y = speed_horizontal
-		
+		if body.playerName != bombOwner.playerName and !hasTouchEnvironnementFirst:
+			body.inFireBomb(bombOwner)
+			fireBy(bombOwner)
+
+		if hasTouchEnvironnementFirst:
+			push_bomb(body)
+			
+	elif body.is_in_group("environnement"):
+		hasTouchEnvironnementFirst = true
