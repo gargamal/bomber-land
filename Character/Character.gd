@@ -65,9 +65,9 @@ func inFireBomb(whoseIsBomb :KinematicBody):
 		isDead = true
 		visible = false
 		Game.addKill(whoseIsBomb.playerName, playerName)
-		translate(Vector3(0, 20.0, 0))
+		translate(Vector3(0, 200.0, 0))
 		rotate(Vector3(1, 0, 0), -PI / 2.0)
-		$TimeRespawn.start(2.0)
+		$TimeRespawn.start()
 
 
 func _on_TimeRespawn_timeout():

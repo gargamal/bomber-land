@@ -30,11 +30,22 @@ func _physics_process(delta):
 	velocity.z = temp_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
+	if !hasTouchEnvironnementFirst:
+		var nb_collider = get_slide_count()
+		if nb_collider > 0:
+			for i in nb_collider:
+				var collision = get_slide_collision(i)
+				if (collision.collider.is_in_group("player") or collision.collider.is_in_group("IA")) and collision.collider.playerName != bombOwner.playerName:
+					collision.collider.inFireBomb(bombOwner)
+					fireBy(bombOwner)
+	
 	detection()
 
 
 func start(position :Transform, direction :Transform, speed_lauch :float, speed_fly :float, pBombOwner :KinematicBody, color :Color):
 	createMaterial(color)
+	
+	body_test_fire.append(pBombOwner)
 	
 	self.global_transform = position
 	velocity = speed_lauch * direction.basis.z
@@ -43,8 +54,12 @@ func start(position :Transform, direction :Transform, speed_lauch :float, speed_
 	bombOwner = pBombOwner
 	
 	var center = position 
-	center.origin.y *= 1.2
-	$center.global_transform = center
+	center.origin.y += 2
+	$center_top.global_transform = center
+	
+	center = position
+	center.origin.y += -2
+	$center_bottom.global_transform = center
 	$Timer.start(lapstime)
 	$Anim.play("color_anim")
 	
@@ -89,16 +104,22 @@ func detection():
 		is_calculating = true
 		var space_state = get_world().direct_space_state
 		for body in body_test_fire:
-			var result = space_state.intersect_ray($center.global_transform.origin, body.get_center())
-			if result and (result.collider.is_in_group("player") or result.collider.is_in_group("IA")):
-				result.collider.inFireBomb(bombOwner)
-			elif result and result.collider.is_in_group("bomb"):
-				result.collider.fireBy(bombOwner)
+			interaction_bomb(space_state, body, $center_top.global_transform.origin)
+			interaction_bomb(space_state, body, $center_bottom.global_transform.origin)
 		is_calculating = false
+
+
+func interaction_bomb(space_state, body, origin):
+	var result = space_state.intersect_ray(origin, body.get_center())
+	if result and (result.collider.is_in_group("player") or result.collider.is_in_group("IA")):
+		result.collider.inFireBomb(bombOwner)
+	elif result and result.collider.is_in_group("bomb"):
+		result.collider.fireBy(bombOwner)
 
 
 func get_center():
 	return $contact.global_transform.origin
+
 
 func push_bomb(body):
 	velocity = body.speed_shoot * body.get_position().basis.z
@@ -114,9 +135,8 @@ func _on_contact_body_entered(body):
 		if hasTouchEnvironnementFirst:
 			push_bomb(body)
 			
-	elif body.is_in_group("environnement"):
+	elif body.is_in_group("floor"):
 		hasTouchEnvironnementFirst = true
-
 
 
 func _on_explosion_body_entered(body):

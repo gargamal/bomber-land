@@ -62,8 +62,10 @@ func changeDirection(newDirection: Vector2):
 func get_position():
 	return $Launch.global_transform
 
+
 func get_center():
 	return $center.global_transform.origin
+
 
 func _on_TestWall_timeout():
 	changingOnRun = false

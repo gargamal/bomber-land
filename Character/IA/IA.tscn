@@ -14,15 +14,15 @@
 [ext_resource path="res://Character/anim/mago.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Character/anim/monster.tscn" type="PackedScene" id=13]
 
+[sub_resource type="CapsuleShape" id=3]
+radius = 16.0
+height = 25.0
+
 [sub_resource type="CapsuleShape" id=1]
 radius = 10.0
 height = 25.0
 
 [sub_resource type="CubeMesh" id=2]
-
-[sub_resource type="CapsuleShape" id=3]
-radius = 16.0
-height = 25.0
 
 [sub_resource type="CylinderShape" id=4]
 radius = 250.0
@@ -38,6 +38,17 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" groups=[
+"IA",
+]]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23, 0 )
+shape = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23, 0 )
 shape = SubResource( 1 )
@@ -51,6 +62,7 @@ one_shot = true
 [node name="LaunchCadency" type="Timer" parent="."]
 
 [node name="TimeRespawn" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="bull" parent="." instance=ExtResource( 9 )]
 
@@ -91,21 +103,12 @@ visible = false
 [node name="tw_rotate" type="Tween" parent="."]
 
 [node name="Launch" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.5195, 20.4491 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.519, 24 )
 
 [node name="debug" type="MeshInstance" parent="Launch"]
 visible = false
 mesh = SubResource( 2 )
 material/0 = null
-
-[node name="Area" type="Area" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 23, 0 )
-shape = SubResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="center" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0 )
@@ -117,9 +120,9 @@ collision_mask = 2147483696
 [node name="CollisionShape" type="CollisionShape" parent="enemy_detect"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
 shape = SubResource( 4 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="TestWall" to="." method="_on_TestWall_timeout"]
 [connection signal="timeout" from="LaunchCadency" to="." method="_on_LaunchCadency_timeout"]
 [connection signal="timeout" from="TimeRespawn" to="." method="_on_TimeRespawn_timeout"]
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_entered" from="enemy_detect" to="." method="_on_enemy_detect_body_entered"]
