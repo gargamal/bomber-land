@@ -35,7 +35,7 @@ func _ready():
 func _physics_process(delta):
 	if not isDead:
 		walk(direction, delta)
-		if is_on_wall():
+		if is_on_wall() or velocity.length() < 10.0:
 			changeDirectionAfterWallContact()
 
 
