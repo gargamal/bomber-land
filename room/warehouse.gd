@@ -5,8 +5,6 @@ var list_ControlPoint = []
 
 
 func _ready():
-	add_to_group("room")
-	
 	$ligth.visible = true
 	$source_ligth.visible = true
 	$celling.visible = true

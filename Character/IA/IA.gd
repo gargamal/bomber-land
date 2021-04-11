@@ -6,9 +6,10 @@ export(Vector3) var direction := Vector3(0.0, 0.0, 1.0)
 
 var changingOnRun = false
 var last_angle = 0.0
+var last_enemy = null
+
 
 func _ready():
-	add_to_group("IA")
 	scale = Vector3(scale_character, scale_character, scale_character)
 	var ia_obj = [$bull, $cromagnon,$cyclop, $dino, $dwarf, $jose, $leg, $mago, $monster, $octopus, $rabbit, $tramp]
 	for obj in ia_obj:
@@ -34,7 +35,7 @@ func _ready():
 func _physics_process(delta):
 	if not isDead:
 		walk(direction, delta)
-		if not changingOnRun and is_on_wall():
+		if is_on_wall():
 			changeDirectionAfterWallContact()
 
 
@@ -46,29 +47,44 @@ func changeDirectionAfterWallContact():
 
 
 func changeDirection(newDirection: Vector2):
-	changingOnRun = true
-	$TestWall.start()
-	var angle = acos(newDirection.y / sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y)) * (1 if newDirection.x >= 0 else -1)
-	
-	$tw_rotate.interpolate_property(self, "rotation", Vector3(0,last_angle,0), Vector3(0,angle,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	$tw_rotate.start()
-	last_angle = angle
-	direction = Vector3(newDirection.x, 0, newDirection.y)
+	if not changingOnRun:
+		changingOnRun = true
+		$TestWall.start()
+		var divisor = sqrt(newDirection.x * newDirection.x + newDirection.y * newDirection.y)
+		var angle =  0 if divisor == 0 else acos(newDirection.y / divisor) * (1 if newDirection.x >= 0 else -1)
+		
+		$tw_rotate.interpolate_property(self, "rotation", Vector3(0,last_angle,0), Vector3(0,angle,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$tw_rotate.start()
+		last_angle = angle
+		direction = Vector3(newDirection.x, 0, newDirection.y)
 
 
 func get_position():
 	return $Launch.global_transform
 
+func get_center():
+	return $center.global_transform.origin
 
 func _on_TestWall_timeout():
 	changingOnRun = false
 
 
 func _on_LaunchCadency_timeout():
-	if not isDead:
+	if not isDead and last_enemy != null:
+		var coord3 = get_center() - last_enemy.get_center()
+		var coord2 = Vector2(coord3.x, coord3.z)
+		changeDirection(coord2.normalized())
+		launch(get_position(), last_enemy.get_position())
+	elif not isDead:
 		launch(get_position(), global_transform)
 
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("bomb"):
 		body.push_bomb(self)
+
+
+func _on_enemy_detect_body_entered(body):
+	if body.is_in_group("player") or body.is_in_group("IA"):
+		last_enemy = body
+

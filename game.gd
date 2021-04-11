@@ -24,6 +24,17 @@ func addKill(killer : String, victim : String):
 
 
 func drawScore():
-	print("name\tkill\tauto kill")
+	var message = format("name", 15) + " " + format("kill", 4) + "  " + format("Suicide", 4) + "\n\n"
 	for name in score:
-		print(name + "\t" + str(score[name][KILL]) + "\t" + str(score[name][AUTO_KILL]))
+		message += format(name, 15) + "   " + format(str(score[name][KILL]), 4) + "  " + format( str(score[name][AUTO_KILL]), 4) + "\n"
+	return message
+
+func format(word, size):
+	var word_final = word
+	if word.length() < size:
+		for i in (size - word.length()):
+			word_final += " "
+	elif word.length() > size:
+		word_final.substr(0, size)
+		
+	return word_final

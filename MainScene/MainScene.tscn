@@ -1,9 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Character/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=2]
 [ext_resource path="res://room/warehouse.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Character/IA/IA.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Niagaraphobia-Bro3.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/Cascadia.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0.203922 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.8, 0.8, 0.8, 0.294118 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 6 )
 
 [node name="MainScene" type="Spatial"]
 script = ExtResource( 2 )
@@ -16,10 +38,10 @@ autostart = true
 [node name="IA_one" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.0733426, 0, 0.997307, 0, 1, 0, -0.997307, 0, -0.0733426, -88.1161, 7.81489, 35.8575 )
 playerName = "Piscine"
-walkSpeed = 60.0
+walkSpeed = 70.0
 walkAcceleration = 6.0
 speed_lauch = 150.0
-speed_shoot = 400.0
+speed_shoot = 300.0
 speed_fly = 30.0
 lapstime = 1.5
 color = Color( 0.0392157, 0.141176, 0.945098, 1 )
@@ -40,7 +62,7 @@ scale_character = 0.45
 [node name="IA_three" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.238212, 0, 0.971214, 0, 1, 0, -0.971214, 0, -0.238212, -115.933, 10.6099, -106.893 )
 playerName = "Lalcolo"
-walkSpeed = 40.0
+walkSpeed = 70.0
 speed_lauch = 200.0
 speed_shoot = 200.0
 speed_fly = 60.0
@@ -54,7 +76,7 @@ transform = Transform( -0.0503317, 0, 0.998733, 0, 1, 0, -0.998733, 0, -0.050331
 playerName = "Agrume"
 walkSpeed = 60.0
 speed_lauch = 200.0
-speed_shoot = 100.0
+speed_shoot = 150.0
 speed_fly = 40.0
 lapstime = 1.0
 color = Color( 1, 0.690196, 0.0313726, 1 )
@@ -64,11 +86,117 @@ scale_character = 0.45
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5685, 16.7553, 39.2373 )
-playerName = "Gros_José"
-walkSpeed = 60.0
+playerName = "Gros_Josez"
+walkSpeed = 80.0
 walkAcceleration = 6.0
 speed_lauch = 200.0
 speed_shoot = 200.0
 speed_fly = 40.0
 color = Color( 0.972549, 0.0588235, 0.913725, 1 )
+
+[node name="menu" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="title" type="Label" parent="menu"]
+anchor_right = 1.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
+text = "Bomber - Land"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox_btn" type="VBoxContainer" parent="menu"]
+anchor_bottom = 1.0
+margin_right = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="menu/vbox_btn"]
+margin_right = 500.0
+margin_bottom = 461.0
+size_flags_vertical = 3
+
+[node name="new" type="Button" parent="menu/vbox_btn"]
+margin_top = 465.0
+margin_right = 500.0
+margin_bottom = 519.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+text = "New"
+
+[node name="Control3" type="Control" parent="menu/vbox_btn"]
+margin_top = 523.0
+margin_right = 500.0
+margin_bottom = 676.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="quit" type="Button" parent="menu/vbox_btn"]
+margin_top = 680.0
+margin_right = 500.0
+margin_bottom = 734.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+
+[node name="Control2" type="Control" parent="menu/vbox_btn"]
+margin_top = 738.0
+margin_right = 500.0
+margin_bottom = 1200.0
+size_flags_vertical = 3
+
+[node name="vbox_score" type="VBoxContainer" parent="menu"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -656.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="menu/vbox_score"]
+margin_right = 656.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="score_title" type="Label" parent="menu/vbox_score"]
+margin_top = 204.0
+margin_right = 656.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
+text = "Score"
+align = 1
+
+[node name="score" type="Label" parent="menu/vbox_score"]
+margin_top = 278.0
+margin_right = 656.0
+margin_bottom = 779.0
+custom_fonts/font = SubResource( 4 )
+text = "cwxc
+
+wxcwx
+c
+wxcwx
+cwx
+cwxc
+wxc
+wxc
+wxcwx
+c
+"
 [connection signal="timeout" from="EndGame" to="." method="_on_EndGame_timeout"]
+[connection signal="pressed" from="menu/vbox_btn/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="menu/vbox_btn/quit" to="." method="_on_quit_pressed"]

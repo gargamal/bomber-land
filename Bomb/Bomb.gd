@@ -12,15 +12,12 @@ const FRICTION := 0.99
 
 enum { UNKOWN, LOADING, EXPLODE }
 var state = UNKOWN
-var detectors = []
+var body_test_fire := []
 var firing = false
+var firing_detection = false
+var is_calculating = false
 var bombOwner
 var hasTouchEnvironnementFirst = false
-
-
-func _ready():
-	add_to_group("bomb")
-	createAllInstanceDetector()
 
 
 func _physics_process(delta):
@@ -32,6 +29,8 @@ func _physics_process(delta):
 	velocity.x = temp_velocity.x
 	velocity.z = temp_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	detection()
 
 
 func start(position :Transform, direction :Transform, speed_lauch :float, speed_fly :float, pBombOwner :KinematicBody, color :Color):
@@ -43,6 +42,9 @@ func start(position :Transform, direction :Transform, speed_lauch :float, speed_
 	state = LOADING
 	bombOwner = pBombOwner
 	
+	var center = position 
+	center.origin.y *= 1.2
+	$center.global_transform = center
 	$Timer.start(lapstime)
 	$Anim.play("color_anim")
 	
@@ -52,16 +54,6 @@ func createMaterial(color: Color):
 	material.albedo_color = color
 	$Mesh.material_override = material
 
-
-func createAllInstanceDetector():
-	var i = 0
-	var interval = PI * 2 / NB_DECTECTOR
-	
-	detectors.append($detector)
-	while i < NB_DECTECTOR:
-		createInstanceDetector(interval * i)
-		i += 1 
-	
 
 func _on_Timer_timeout():
 	if state == LOADING:
@@ -80,6 +72,8 @@ func fire():
 		$Mesh.visible = false
 		$Anim.play("light_anim")
 		yield($Anim, "animation_finished")
+		while is_calculating:
+			var _is_calculating = is_calculating
 		queue_free()
 
 
@@ -90,29 +84,28 @@ func fireBy(pBombOwner):
 
 
 func detection():
-	for detector in detectors:
-		var body = detector.get_collider()
-		if body != null and (body.is_in_group("player") or body.is_in_group("IA")):
-			body.inFireBomb(bombOwner)
-		elif body != null and body.is_in_group("bomb"):
-			body.fireBy(bombOwner)
+	if firing and not firing_detection:
+		firing_detection = true
+		is_calculating = true
+		var space_state = get_world().direct_space_state
+		for body in body_test_fire:
+			var result = space_state.intersect_ray($center.global_transform.origin, body.get_center())
+			if result and (result.collider.is_in_group("player") or result.collider.is_in_group("IA")):
+				result.collider.inFireBomb(bombOwner)
+			elif result and result.collider.is_in_group("bomb"):
+				result.collider.fireBy(bombOwner)
+		is_calculating = false
 
+
+func get_center():
+	return $contact.global_transform.origin
 
 func push_bomb(body):
 	velocity = body.speed_shoot * body.get_position().basis.z
 	velocity.y = velocity.y + body.speed_fly
 
 
-func createInstanceDetector(angle):
-	$detector.global_rotate(Vector3(1, 0, 0), ROTATE_DECTECTOR)
-	var detector = $detector.duplicate()
-	detector.rotate_y(angle)
-	add_child(detector)
-	detectors.append(detector)
-	return detector
-
-
-func _on_Area_body_entered(body):
+func _on_contact_body_entered(body):
 	if body.is_in_group("player") or body.is_in_group("IA"):
 		if body.playerName != bombOwner.playerName and !hasTouchEnvironnementFirst:
 			body.inFireBomb(bombOwner)
@@ -123,3 +116,14 @@ func _on_Area_body_entered(body):
 			
 	elif body.is_in_group("environnement"):
 		hasTouchEnvironnementFirst = true
+
+
+
+func _on_explosion_body_entered(body):
+	if (body.is_in_group("player") or body.is_in_group("IA") or body.is_in_group("bomb")) and body_test_fire.find(body) == -1:
+		body_test_fire.append(body)
+
+
+func _on_explosion_body_exited(body):
+	if (body.is_in_group("player") or body.is_in_group("IA") or body.is_in_group("bomb")) and body_test_fire.find(body) != -1:
+		body_test_fire.erase(body)

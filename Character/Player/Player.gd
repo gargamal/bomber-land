@@ -8,7 +8,6 @@ export(float) var mouseSensitivity := 0.3
 
 
 func _ready():
-	add_to_group("player")
 	scale = Vector3(scale_character, scale_character, scale_character)
 
 
@@ -28,13 +27,17 @@ func launchTest():
 	if Input.is_action_just_pressed("launch_bomb") and launch_bomb:
 		var transform_direction = $Head/Camera.get_camera_transform()
 		transform_direction.basis.z *= -1
-		launch(get_position(), transform_direction)
+		launch($Head/Camera/Launch.global_transform, transform_direction)
 
 
 func get_position():
 	var transform_position = $Head/Camera/Launch.global_transform
 	transform_position.basis.z *= -1
 	return transform_position
+
+
+func get_center():
+	return $center.global_transform.origin
 
 
 func walkChooseDirection(delta):

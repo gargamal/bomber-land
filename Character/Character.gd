@@ -71,10 +71,15 @@ func inFireBomb(whoseIsBomb :KinematicBody):
 
 
 func _on_TimeRespawn_timeout():
+	spawn()
+	$TimeRespawn.stop()
+
+
+func spawn():
 	var room = get_parent().get_node("room")
 	global_transform = room.getRespawn()
 	scale = Vector3(scale_character, scale_character, scale_character)
 	isDead = false
 	visible = true
-	$TimeRespawn.stop()
-
+	
+	
